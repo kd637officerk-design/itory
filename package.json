@@ -1,0 +1,32 @@
+{
+  "name": "prime-one-windows",
+  "version": "1.0.0",
+  "description": "Prime One desktop music player for Windows, packaged from the supplied Android app bundle.",
+  "main": "main.js",
+  "author": "Prime One contributors",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "^34.0.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.primeone.desktop",
+    "productName": "Prime One",
+    "directories": { "output": "dist" },
+    "files": ["main.js", "preload.js", "assets/**/*", "package.json"],
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }],
+      "icon": "assets/app-icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
